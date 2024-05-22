@@ -16,12 +16,21 @@ public class StartGameTest {
 	/**
 	 * A_TEAM: test football team
 	 */
-	protected static final String A_TEAM = "A_TEAM";
+	private static final String A_TEAM = "A_TEAM";
+	
 	/**
 	 * B_TEAM: test football team
 	 */
-	protected static final String B_TEAM = "B_TEAM";
+	private static final String B_TEAM = "B_TEAM";
 
+	/**
+	 * Default Score
+	 */
+	private static final int DEFAULT_SCORE = 0;
+	
+	/**
+	 * Start game test : check game creation and score initialization
+	 */
 	@Test
 	public void startGame() {
 		ScoreBoardController ctrl = new ScoreBoardController();
@@ -30,5 +39,9 @@ public class StartGameTest {
 		assertNotNull(g);
 		assertEquals(A_TEAM, g.getHomeTeamName());
 		assertEquals(B_TEAM, g.getAwayTeamName());
+		
+		assertEquals(DEFAULT_SCORE, g.getHomeTeamScore());
+		
+		
 	}
 }
