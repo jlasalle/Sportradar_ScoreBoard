@@ -54,4 +54,13 @@ public class Game {
 	public int getHomeTeamScore() {
 		return 0;
 	}
+
+	/**
+	 * Get away team score
+	 * 
+	 * @return the away team score
+	 */
+	public int getAwayTeamScore() {
+		return 0;
+	}
 }
