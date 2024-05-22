@@ -1,10 +1,16 @@
 package org.lasalle.scoreboard;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.lasalle.scoreboard.game.Game;
 
+/**
+ * Test of starting a new game
+ * 
+ * @author Jonathan Lasalle
+ */
 public class StartGameTest {
 
 	/**
@@ -22,5 +28,6 @@ public class StartGameTest {
 		Game g = ctrl.startGame(A_TEAM, B_TEAM);
 
 		assertNotNull(g);
+		assertEquals(A_TEAM, g.getHomeTeamName());
 	}
 }
