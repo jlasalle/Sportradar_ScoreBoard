@@ -29,5 +29,6 @@ public class StartGameTest {
 
 		assertNotNull(g);
 		assertEquals(A_TEAM, g.getHomeTeamName());
+		assertEquals(B_TEAM, g.getAwayTeamName());
 	}
 }
