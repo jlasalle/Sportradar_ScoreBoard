@@ -2,6 +2,7 @@ package org.lasalle.scoreboard;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.lasalle.scoreboard.game.Game;
@@ -36,11 +37,14 @@ public class StartGameTest {
 		ScoreBoardController ctrl = new ScoreBoardController();
 		Game g = ctrl.startGame(A_TEAM, B_TEAM);
 
+		//Check game configuration
 		assertNotNull(g);
 		assertEquals(A_TEAM, g.getHomeTeamName());
 		assertEquals(B_TEAM, g.getAwayTeamName());
-
 		assertEquals(DEFAULT_SCORE, g.getHomeTeamScore());
 		assertEquals(DEFAULT_SCORE, g.getAwayTeamScore());
+		
+		//Check that the game is effectively add in the score board
+		assertTrue(ctrl.containsGame(g));
 	}
 }
