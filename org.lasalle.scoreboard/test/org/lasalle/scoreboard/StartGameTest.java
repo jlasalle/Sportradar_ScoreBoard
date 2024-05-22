@@ -34,7 +34,10 @@ public class StartGameTest {
 	 */
 	@Test
 	public void startGame() {
-		ScoreBoardController ctrl = new ScoreBoardController();
+		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
+		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
+		
+		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
 		Game g = ctrl.startGame(A_TEAM, B_TEAM);
 
 		//Check game configuration

@@ -11,6 +11,18 @@ import org.lasalle.scoreboard.game.GameBuilder;
 public class ScoreBoardController {
 
 	/**
+	 * ScoreBoard managed by the controller
+	 */
+	private ScoreBoard _scoreBoard = null;
+
+	/**
+	 * Default constructor
+	 */
+	public ScoreBoardController(ScoreBoard scoreBoard) {
+		_scoreBoard = scoreBoard;
+	}
+
+	/**
 	 * Start game action
 	 * 
 	 * @param homeTeam name of the home team
@@ -19,6 +31,18 @@ public class ScoreBoardController {
 	 */
 	public Game startGame(String homeTeam, String awayTeam) {
 		GameBuilder ctrl = new GameBuilder();
-		return ctrl.createGame(homeTeam, awayTeam);
+		Game newGame = ctrl.createGame(homeTeam, awayTeam);
+		_scoreBoard.addGame(newGame);
+		return newGame;
+	}
+
+	/**
+	 * Indicate if the current Scoreboard effectively contains the given game
+	 * 
+	 * @param g search Game
+	 * @return true if the given Game is included in the scoreBoard
+	 */
+	public boolean containsGame(Game g) {
+		return _scoreBoard.contains(g);
 	}
 }
