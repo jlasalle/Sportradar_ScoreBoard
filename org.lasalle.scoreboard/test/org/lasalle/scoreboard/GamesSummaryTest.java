@@ -41,15 +41,14 @@ public class GamesSummaryTest {
 	public void gamesSummary() {
 		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
 		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
-
-		ScoreBoardDisplay dis = new ScoreBoardDisplay(scoreBoard);
+		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
+		ScoreBoardDisplay dis = new ScoreBoardDisplay(ctrl);
 
 		// No games case
 		String sum = dis.genSummary();
 		assertEquals("", sum);
 
 		// Single game case
-		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
 		Game game = ctrl.startGame(A_TEAM, B_TEAM);
 		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
 		scoreCtrl.updateScore(game, A_TEAM_NEW_SCORE, B_TEAM_NEW_SCORE);

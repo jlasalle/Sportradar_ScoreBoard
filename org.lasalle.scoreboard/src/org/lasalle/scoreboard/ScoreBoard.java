@@ -51,4 +51,12 @@ public class ScoreBoard {
 		return _allGames.contains(g);
 	}
 
+	/**
+	 * Get all Games managed by the ScoreBoard
+	 * 
+	 * @return a set of Games
+	 */
+	public Set<Game> getAllGames() {
+		return _allGames;
+	}
 }

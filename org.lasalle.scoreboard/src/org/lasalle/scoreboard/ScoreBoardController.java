@@ -1,5 +1,8 @@
 package org.lasalle.scoreboard;
 
+import java.util.Collections;
+import java.util.Set;
+
 import org.lasalle.scoreboard.game.Game;
 import org.lasalle.scoreboard.game.GameBuilder;
 
@@ -46,6 +49,15 @@ public class ScoreBoardController {
 	}
 
 	/**
+	 * Get all Games managed by the ScoreBoard
+	 * 
+	 * @return an unmodifiable set of Games
+	 */
+	public Set<Game> getAllGames() {
+		return Collections.unmodifiableSet(_scoreBoard.getAllGames());
+	}
+	
+	/**
 	 * Indicate if the current Scoreboard effectively contains the given game
 	 * 
 	 * @param g search Game
@@ -54,5 +66,4 @@ public class ScoreBoardController {
 	public boolean containsGame(Game g) {
 		return _scoreBoard.contains(g);
 	}
-
 }
