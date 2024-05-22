@@ -37,7 +37,7 @@ public class ScoreBoardDisplay {
 	public String genSummary() {
 		String result = "";
 		int index = 1;
-		for (Game g : _boardCtrl.getAllGames()) {
+		for (Game g : _boardCtrl.getSortedGames()) {
 			if (g != null) {
 				result += genSingleLine(index, g);
 				index++;

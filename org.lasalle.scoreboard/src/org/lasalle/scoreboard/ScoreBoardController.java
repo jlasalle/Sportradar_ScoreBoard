@@ -1,7 +1,8 @@
 package org.lasalle.scoreboard;
 
-import java.util.Collections;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.lasalle.scoreboard.game.Game;
 import org.lasalle.scoreboard.game.GameBuilder;
@@ -49,15 +50,6 @@ public class ScoreBoardController {
 	}
 
 	/**
-	 * Get all Games managed by the ScoreBoard
-	 * 
-	 * @return an unmodifiable set of Games
-	 */
-	public Set<Game> getAllGames() {
-		return Collections.unmodifiableSet(_scoreBoard.getAllGames());
-	}
-	
-	/**
 	 * Indicate if the current Scoreboard effectively contains the given game
 	 * 
 	 * @param g search Game
@@ -65,5 +57,27 @@ public class ScoreBoardController {
 	 */
 	public boolean containsGame(Game g) {
 		return _scoreBoard.contains(g);
+	}
+	
+
+	/**
+	 * Get all Games managed by the ScoreBoard sorted by total Score (DESC)
+	 * 
+	 * @return an unmodifiable set of Games
+	 */
+	public List<Game> getSortedGames() {
+
+		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
+
+		// Order all the games by total score
+		List<Game> orderedList = _scoreBoard.getAllGames().stream().sorted(new Comparator<Game>() {
+			@Override
+			public int compare(Game g1, Game g2) {
+				return (scoreCtrl.getHomeTeamScore(g2) + scoreCtrl.getAwayTeamScore(g2))
+						- (scoreCtrl.getHomeTeamScore(g1) + scoreCtrl.getAwayTeamScore(g1));
+			}
+		}).collect(Collectors.toUnmodifiableList());
+
+		return orderedList;
 	}
 }
