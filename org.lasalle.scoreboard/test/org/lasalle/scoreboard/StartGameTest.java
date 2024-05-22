@@ -36,18 +36,21 @@ public class StartGameTest {
 	public void startGame() {
 		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
 		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
-		
+
 		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
 		Game g = ctrl.startGame(A_TEAM, B_TEAM);
 
-		//Check game configuration
+		// Check game configuration
 		assertNotNull(g);
 		assertEquals(A_TEAM, g.getHomeTeamName());
 		assertEquals(B_TEAM, g.getAwayTeamName());
-		assertEquals(DEFAULT_SCORE, g.getHomeTeamScore());
+
+		// Check game default score
+		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
+		assertEquals(DEFAULT_SCORE, scoreCtrl.getHomeTeamScore(g));
 		assertEquals(DEFAULT_SCORE, g.getAwayTeamScore());
-		
-		//Check that the game is effectively add in the score board
+
+		// Check that the game is effectively add in the score board
 		assertTrue(ctrl.containsGame(g));
 	}
 }
