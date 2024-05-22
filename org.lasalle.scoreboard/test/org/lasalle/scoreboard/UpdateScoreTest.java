@@ -51,5 +51,6 @@ public class UpdateScoreTest {
 		scoreCtrl.updateScore(game, A_TEAM_NEW_SCORE, B_TEAM_NEW_SCORE);
 		
 		assertEquals(A_TEAM_NEW_SCORE, scoreCtrl.getHomeTeamScore(game));
+		assertEquals(B_TEAM_NEW_SCORE, scoreCtrl.getAwayTeamScore(game));
 	}
 }
