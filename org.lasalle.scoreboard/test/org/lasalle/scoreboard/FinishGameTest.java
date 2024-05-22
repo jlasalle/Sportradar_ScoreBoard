@@ -1,7 +1,6 @@
 package org.lasalle.scoreboard;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.lasalle.scoreboard.game.Game;
@@ -37,7 +36,7 @@ public class FinishGameTest {
 		Game g = sbCtrl.startGame(A_TEAM, B_TEAM);
 
 		sbCtrl.finishGame(g);
-		
+
 		assertFalse(sbCtrl.containsGame(g));
 	}
 

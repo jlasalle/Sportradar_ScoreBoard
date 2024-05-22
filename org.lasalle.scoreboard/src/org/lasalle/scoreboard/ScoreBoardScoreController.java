@@ -19,10 +19,25 @@ public class ScoreBoardScoreController {
 	public void updateScore(Game game, int homeTeamNewScore, int awayTeamNewScore) {
 		if (game != null) {
 			game.setHomeTeamScore(homeTeamNewScore);
+			game.setAwayTeamScore(awayTeamNewScore);
 		}
 	}
 
+	/**
+	 * Get the "Home" team score
+	 * 
+	 * @return the score of the "home" team
+	 */
 	public int getHomeTeamScore(Game game) {
 		return game.getHomeTeamScore();
+	}
+
+	/**
+	 * Get the "Away" team score
+	 * 
+	 * @return the score of the "home" team
+	 */
+	public int getAwayTeamScore(Game game) {
+		return game.getAwayTeamScore();
 	}
 }

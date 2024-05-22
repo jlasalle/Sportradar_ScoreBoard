@@ -48,7 +48,7 @@ public class StartGameTest {
 		// Check game default score
 		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
 		assertEquals(DEFAULT_SCORE, scoreCtrl.getHomeTeamScore(g));
-		assertEquals(DEFAULT_SCORE, g.getAwayTeamScore());
+		assertEquals(DEFAULT_SCORE, scoreCtrl.getAwayTeamScore(g));
 
 		// Check that the game is effectively add in the score board
 		assertTrue(ctrl.containsGame(g));

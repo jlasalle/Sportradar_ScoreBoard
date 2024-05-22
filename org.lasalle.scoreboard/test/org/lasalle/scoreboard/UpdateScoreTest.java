@@ -1,7 +1,6 @@
 package org.lasalle.scoreboard;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.lasalle.scoreboard.game.Game;
@@ -42,14 +41,14 @@ public class UpdateScoreTest {
 		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
 		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
 
-		//Board controller
+		// Board controller
 		ScoreBoardController boardCtrl = new ScoreBoardController(scoreBoard);
 		Game game = boardCtrl.startGame(A_TEAM, B_TEAM);
 
-		//Score controller
-		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController(); 
+		// Score controller
+		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
 		scoreCtrl.updateScore(game, A_TEAM_NEW_SCORE, B_TEAM_NEW_SCORE);
-		
+
 		assertEquals(A_TEAM_NEW_SCORE, scoreCtrl.getHomeTeamScore(game));
 		assertEquals(B_TEAM_NEW_SCORE, scoreCtrl.getAwayTeamScore(game));
 	}

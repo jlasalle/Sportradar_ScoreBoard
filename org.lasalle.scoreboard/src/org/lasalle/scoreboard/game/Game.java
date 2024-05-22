@@ -23,6 +23,11 @@ public class Game {
 	private int _homeTeamScore = 0;
 
 	/**
+	 * The score of the "Away" team
+	 */
+	private int _awayTeamScore = 0;
+
+	/**
 	 * Game constructor
 	 * 
 	 * @param homeTeamName name of the home team
@@ -75,6 +80,16 @@ public class Game {
 	 * @return the away team score
 	 */
 	public int getAwayTeamScore() {
-		return 0;
+		return _awayTeamScore;
 	}
+
+	/**
+	 * Update the "Away" team score
+	 * 
+	 * @param awayTeamNewScore the new score
+	 */
+	public void setAwayTeamScore(int awayTeamNewScore) {
+		_awayTeamScore = awayTeamNewScore;
+	}
+
 }
