@@ -1,12 +1,12 @@
 package org.lasalle.scoreboard;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
+import org.lasalle.scoreboard.game.Game;
 
 public class StartGameTest {
-	
+
 	/**
 	 * A_TEAM: test football team
 	 */
@@ -20,7 +20,7 @@ public class StartGameTest {
 	public void startGame() {
 		ScoreBoardController ctrl = new ScoreBoardController();
 		Game g = ctrl.startGame(A_TEAM, B_TEAM);
-		
+
 		assertNotNull(g);
 	}
 }
