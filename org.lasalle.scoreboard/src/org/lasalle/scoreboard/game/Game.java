@@ -46,4 +46,12 @@ public class Game {
 		return _awayTeamName;
 	}
 
+	/**
+	 * Get home team score
+	 * 
+	 * @return the home team score
+	 */
+	public int getHomeTeamScore() {
+		return 0;
+	}
 }
