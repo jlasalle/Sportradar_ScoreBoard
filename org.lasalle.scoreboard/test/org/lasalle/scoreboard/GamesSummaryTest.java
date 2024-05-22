@@ -25,17 +25,43 @@ public class GamesSummaryTest {
 	private static final String B_TEAM = "B_TEAM";
 
 	/**
-	 * New score for the "Home" team
+	 * C_TEAM: test football team
+	 */
+	private static final String C_TEAM = "C_TEAM";
+
+	/**
+	 * D_TEAM: test football team
+	 */
+	private static final String D_TEAM = "D_TEAM";
+
+	/**
+	 * Default Score
+	 */
+	private static final int DEFAULT_SCORE = 0;
+
+	/**
+	 * New score for the A team
 	 */
 	private static final int A_TEAM_NEW_SCORE = 1;
 
 	/**
-	 * New score for the "Away" team
+	 * New score for the B team
 	 */
 	private static final int B_TEAM_NEW_SCORE = 2;
 
 	/**
+	 * New score for the C team
+	 */
+	private static final int C_TEAM_NEW_SCORE = 3;
+
+	/**
+	 * New score for the D team
+	 */
+	private static final int D_TEAM_NEW_SCORE = 4;
+
+	/**
 	 * Check that the "games summary" feature return the right String expression
+	 * (basic cases)
 	 */
 	@Test
 	public void gamesSummary() {
@@ -55,6 +81,43 @@ public class GamesSummaryTest {
 
 		sum = dis.genSummary();
 		String expectedRes = genExpectedSumLine(1, A_TEAM, A_TEAM_NEW_SCORE, B_TEAM, B_TEAM_NEW_SCORE);
+		assertEquals(expectedRes, sum);
+	}
+
+	/**
+	 * Check that the "games summary" feature return the right String expression.
+	 * Change order : 2 games, the second one having a higher total score (having
+	 * then to be displayed first).
+	 */
+	@Test
+	public void gamesSummary_order() {
+		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
+		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
+		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
+		ScoreBoardDisplay dis = new ScoreBoardDisplay(ctrl);
+		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
+
+		
+		//First Check
+		//A 1 - B 2
+		//C 0 - D 0
+		Game abGame = ctrl.startGame(A_TEAM, B_TEAM);
+		scoreCtrl.updateScore(abGame, A_TEAM_NEW_SCORE, B_TEAM_NEW_SCORE);
+
+		Game cdGame = ctrl.startGame(C_TEAM, D_TEAM);
+
+		String sum = dis.genSummary();
+		String expectedRes = genExpectedSumLine(1, A_TEAM, A_TEAM_NEW_SCORE, B_TEAM, B_TEAM_NEW_SCORE)
+				+ genExpectedSumLine(2, C_TEAM, DEFAULT_SCORE, D_TEAM, DEFAULT_SCORE);
+		assertEquals(expectedRes, sum);
+
+		//Second Check
+		//C 3 - D 4
+		//A 1 - B 2
+		scoreCtrl.updateScore(cdGame, C_TEAM_NEW_SCORE, D_TEAM_NEW_SCORE);
+		sum = dis.genSummary();
+		expectedRes = genExpectedSumLine(1, C_TEAM, C_TEAM_NEW_SCORE, D_TEAM, D_TEAM_NEW_SCORE)
+				+ genExpectedSumLine(2, A_TEAM, A_TEAM_NEW_SCORE, B_TEAM, B_TEAM_NEW_SCORE);
 		assertEquals(expectedRes, sum);
 	}
 
