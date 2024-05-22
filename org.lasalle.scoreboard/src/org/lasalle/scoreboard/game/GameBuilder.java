@@ -15,6 +15,6 @@ public class GameBuilder {
 	 * @return the created Game
 	 */
 	public Game createGame(String homeTeam, String awayTeam) {
-		return new Game();
+		return new Game(homeTeam);
 	}
 }
