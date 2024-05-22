@@ -37,6 +37,15 @@ public class ScoreBoardController {
 	}
 
 	/**
+	 * Finish game action
+	 * 
+	 * @param game Game to be removed
+	 */
+	public void finishGame(Game game) {
+		_scoreBoard.removeGame(game);
+	}
+
+	/**
 	 * Indicate if the current Scoreboard effectively contains the given game
 	 * 
 	 * @param g search Game
@@ -45,4 +54,5 @@ public class ScoreBoardController {
 	public boolean containsGame(Game g) {
 		return _scoreBoard.contains(g);
 	}
+
 }

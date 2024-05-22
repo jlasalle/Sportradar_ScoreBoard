@@ -22,7 +22,7 @@ public class ScoreBoard {
 	 */
 	public ScoreBoard() {
 	}
-	
+
 	/**
 	 * Add a new Game in the scoreboard
 	 * 
@@ -31,7 +31,15 @@ public class ScoreBoard {
 	public void addGame(Game newGame) {
 		_allGames.add(newGame);
 	}
-	
+
+	/**
+	 * Remove a game from the scoreboard
+	 * 
+	 * @param game the game to remove
+	 */
+	public void removeGame(Game game) {
+		_allGames.remove(game);
+	}
 
 	/**
 	 * Check if the scoreboard contains the given game
@@ -43,5 +51,4 @@ public class ScoreBoard {
 		return _allGames.contains(g);
 	}
 
-	
 }
