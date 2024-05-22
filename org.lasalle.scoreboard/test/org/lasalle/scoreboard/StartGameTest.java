@@ -17,7 +17,7 @@ public class StartGameTest {
 	 * A_TEAM: test football team
 	 */
 	private static final String A_TEAM = "A_TEAM";
-	
+
 	/**
 	 * B_TEAM: test football team
 	 */
@@ -27,7 +27,7 @@ public class StartGameTest {
 	 * Default Score
 	 */
 	private static final int DEFAULT_SCORE = 0;
-	
+
 	/**
 	 * Start game test : check game creation and score initialization
 	 */
@@ -39,9 +39,8 @@ public class StartGameTest {
 		assertNotNull(g);
 		assertEquals(A_TEAM, g.getHomeTeamName());
 		assertEquals(B_TEAM, g.getAwayTeamName());
-		
+
 		assertEquals(DEFAULT_SCORE, g.getHomeTeamScore());
-		
-		
+		assertEquals(DEFAULT_SCORE, g.getAwayTeamScore());
 	}
 }
