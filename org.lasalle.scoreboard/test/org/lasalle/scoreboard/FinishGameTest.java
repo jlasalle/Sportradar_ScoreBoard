@@ -28,7 +28,7 @@ public class FinishGameTest {
 	 * score board
 	 */
 	@Test
-	public void test() {
+	public void finishGame() {
 		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
 		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
 
