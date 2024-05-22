@@ -58,10 +58,10 @@ public class ScoreBoardController {
 	public boolean containsGame(Game g) {
 		return _scoreBoard.contains(g);
 	}
-	
 
 	/**
-	 * Get all Games managed by the ScoreBoard sorted by total Score (DESC)
+	 * Get all Games managed by the ScoreBoard sorted by total Score (DESC). If
+	 * total score is the same: most recent first
 	 * 
 	 * @return an unmodifiable set of Games
 	 */
@@ -69,12 +69,15 @@ public class ScoreBoardController {
 
 		ScoreBoardScoreController scoreCtrl = new ScoreBoardScoreController();
 
-		// Order all the games by total score
 		List<Game> orderedList = _scoreBoard.getAllGames().stream().sorted(new Comparator<Game>() {
 			@Override
 			public int compare(Game g1, Game g2) {
-				return (scoreCtrl.getHomeTeamScore(g2) + scoreCtrl.getAwayTeamScore(g2))
+				int comparison = (scoreCtrl.getHomeTeamScore(g2) + scoreCtrl.getAwayTeamScore(g2))
 						- (scoreCtrl.getHomeTeamScore(g1) + scoreCtrl.getAwayTeamScore(g1));
+				if (comparison == 0) {
+					return _scoreBoard.getAllGames().indexOf(g2) - _scoreBoard.getAllGames().indexOf(g1);
+				}
+				return comparison;
 			}
 		}).collect(Collectors.toUnmodifiableList());
 

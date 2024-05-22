@@ -1,7 +1,7 @@
 package org.lasalle.scoreboard;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lasalle.scoreboard.game.Game;
 
@@ -15,7 +15,7 @@ public class ScoreBoard {
 	/**
 	 * Manage the list of all games associated to the Scoreboard
 	 */
-	private Set<Game> _allGames = new HashSet<>();
+	private List<Game> _allGames = new ArrayList<>();
 
 	/**
 	 * Default Constructor
@@ -56,7 +56,7 @@ public class ScoreBoard {
 	 * 
 	 * @return a set of Games
 	 */
-	public Set<Game> getAllGames() {
+	public List<Game> getAllGames() {
 		return _allGames;
 	}
 }

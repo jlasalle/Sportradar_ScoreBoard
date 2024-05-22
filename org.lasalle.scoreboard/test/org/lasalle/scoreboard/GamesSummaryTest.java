@@ -135,7 +135,7 @@ public class GamesSummaryTest {
 	 * games with the same total: the most recent must be displayed first.
 	 */
 	@Test
-	public void gamesSummaryTest_equalityCase() {
+	public void gamesSummary_equalityCase() {
 		ScoreBoardBuilder sbBuilder = new ScoreBoardBuilder();
 		ScoreBoard scoreBoard = sbBuilder.createScoreBoard();
 		ScoreBoardController ctrl = new ScoreBoardController(scoreBoard);
